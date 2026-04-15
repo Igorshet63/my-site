@@ -1,0 +1,495 @@
+
+/* ============================================
+   НЕЙРОСИНТЕЗ — Dark Mode Portfolio
+   Палитра: Deep Code | Clean Syntax | AI-Spark | Obsidian Glass
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap');
+
+:root {
+  /* 60% — Deep Code (Фон) */
+  --color-deep-code: #0B1120;
+  --color-deep-code-light: #0f172a;
+
+  /* 30% — Obsidian Glass (Карточки, бейджи) */
+  --color-obsidian: #151D2E;
+  --color-obsidian-light: #1e293b;
+
+  /* 30% — Clean Syntax (Текст) */
+  --color-clean-syntax: #E2E8F0;
+  --color-clean-syntax-muted: #94a3b8;
+
+  /* 10% — AI-Spark (Акценты, кнопки, эффекты) */
+  --color-ai-spark: #00E5FF;
+  --color-ai-spark-dim: rgba(0, 229, 255, 0.8);
+  --color-ai-spark-glow: rgba(0, 229, 255, 0.3);
+
+  /* Градиенты */
+  --gradient-neural: radial-gradient(circle at 50% 0%, rgba(0, 229, 255, 0.08) 0%, transparent 50%);
+  --gradient-card: linear-gradient(145deg, rgba(21, 29, 46, 0.9) 0%, rgba(15, 23, 42, 0.95) 100%);
+
+  /* Типографика */
+  --font-primary: 'Inter', sans-serif;
+  --font-display: 'Space Grotesk', sans-serif;
+
+  /* Тени и свечения */
+  --shadow-glow: 0 0 20px var(--color-ai-spark-glow);
+  --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.4);
+  --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.3);
+
+  /* Отступы */
+  --spacing-xs: 8px;
+  --spacing-sm: 12px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-xxl: 48px;
+  --spacing-xxxl: 64px;
+
+  /* Радиусы */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+}
+
+/* Сброс и базовые стили */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-primary);
+  background-color: var(--color-deep-code);
+  color: var(--color-clean-syntax);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Фон с нейро-градиентом */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--gradient-neural);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* ============================================
+   ХЕДЕР (Glassmorphism)
+   ============================================ */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  background: rgba(11, 17, 32, 0.8);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(0, 229, 255, 0.1);
+  z-index: 1000;
+}
+
+.header__container {
+  max-width: 1440px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 var(--spacing-xl);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 26px;
+  color: var(--color-clean-syntax);
+  text-decoration: none;
+  letter-spacing: -0.5px;
+  transition: all 0.3s ease;
+}
+
+.logo span {
+  color: var(--color-ai-spark);
+}
+
+.logo:hover {
+  text-shadow: 0 0 20px var(--color-ai-spark-glow);
+}
+
+.nav {
+  display: flex;
+  gap: var(--spacing-xl);
+}
+
+.nav__link {
+  text-decoration: none;
+  color: var(--color-clean-syntax-muted);
+  font-weight: 500;
+  font-size: 15px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.nav__link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--color-ai-spark);
+  transition: width 0.3s ease;
+  box-shadow: var(--shadow-glow);
+}
+
+.nav__link:hover {
+  color: var(--color-ai-spark);
+}
+
+.nav__link:hover::after {
+  width: 100%;
+}
+
+/* ============================================
+   HERO SECTION
+   ============================================ */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 140px var(--spacing-xl) 100px;
+  max-width: 1440px;
+  margin: 0 auto;
+  min-height: 100vh;
+  position: relative;
+}
+
+.hero__content {
+  max-width: 680px;
+  z-index: 2;
+}
+
+/* Бейдж роли */
+.hero__badge {
+  display: inline-block;
+  background: var(--color-obsidian);
+  border: 1px solid rgba(0, 229, 255, 0.2);
+  color: var(--color-ai-spark);
+  padding: var(--spacing-xs) var(--spacing-md);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: var(--spacing-lg);
+  box-shadow: var(--shadow-soft);
+}
+
+.hero__name {
+  font-family: var(--font-display);
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--color-clean-syntax);
+  margin-bottom: var(--spacing-md);
+  letter-spacing: -2px;
+}
+
+/* Акцент на ключевых словах */
+.hero__name .accent {
+  background: linear-gradient(135deg, var(--color-ai-spark) 0%, var(--color-clean-syntax) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero__role {
+  font-size: 28px;
+  font-weight: 400;
+  line-height: 1.3;
+  color: var(--color-clean-syntax-muted);
+  margin-bottom: var(--spacing-lg);
+  font-family: var(--font-display);
+}
+
+.hero__role .highlight {
+  color: var(--color-ai-spark);
+  font-weight: 500;
+}
+
+.hero__description {
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 1.7;
+  color: var(--color-clean-syntax-muted);
+  margin-bottom: var(--spacing-xxl);
+  max-width: 540px;
+}
+
+/* AI-Keywords в тексте */
+.ai-keyword {
+  color: var(--color-ai-spark);
+  font-weight: 400;
+  opacity: 0.9;
+}
+
+.hero__actions {
+  display: flex;
+  gap: var(--spacing-md);
+  align-items: center;
+}
+
+/* ============================================
+   КНОПКИ (60/30/10)
+   ============================================ */
+.btn {
+  padding: 14px 32px;
+  font-family: var(--font-primary);
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  border: none;
+}
+
+/* Primary — AI-Spark (10%) */
+.btn--primary {
+  background: var(--color-ai-spark);
+  color: var(--color-deep-code);
+  font-weight: 600;
+  box-shadow: 0 0 0 rgba(0, 229, 255, 0);
+}
+
+.btn--primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 30px var(--color-ai-spark-glow), 
+              0 10px 40px rgba(0, 229, 255, 0.2);
+}
+
+.btn--primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  transition: left 0.5s ease;
+}
+
+.btn--primary:hover::before {
+  left: 100%;
+}
+
+/* Secondary — Obsidian Glass (30%) */
+.btn--secondary {
+  background: transparent;
+  color: var(--color-clean-syntax);
+  border: 1px solid var(--color-obsidian-light);
+  backdrop-filter: blur(10px);
+}
+
+.btn--secondary:hover {
+  background: var(--color-obsidian);
+  border-color: var(--color-ai-spark);
+  color: var(--color-ai-spark);
+  box-shadow: var(--shadow-glow);
+}
+
+/* ============================================
+   HERO IMAGE
+   ============================================ */
+.hero__visual {
+  position: relative;
+  width: 480px;
+  height: 480px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero__image-wrapper {
+  position: relative;
+  width: 420px;
+  height: 420px;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  background: var(--gradient-card);
+  border: 1px solid rgba(0, 229, 255, 0.15);
+  box-shadow: var(--shadow-card);
+}
+
+.hero__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.9;
+  transition: transform 0.5s ease;
+}
+
+.hero__image-wrapper:hover .hero__image {
+  transform: scale(1.05);
+}
+
+/* Декоративное свечение вокруг фото */
+.hero__glow {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius-xl);
+  background: var(--color-ai-spark);
+  opacity: 0.15;
+  filter: blur(60px);
+  z-index: -1;
+  animation: pulse 4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 0.15; }
+  50% { transform: scale(1.05); opacity: 0.25; }
+}
+
+/* ============================================
+   ДЕКОРАТИВНЫЕ ЭЛЕМЕНТЫ
+   ============================================ */
+.code-decoration {
+  position: absolute;
+  font-family: 'Space Grotesk', monospace;
+  font-size: 12px;
+  color: var(--color-ai-spark);
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.code-decoration--1 {
+  top: 20%;
+  right: 10%;
+  animation: float 6s ease-in-out infinite;
+}
+
+.code-decoration--2 {
+  bottom: 30%;
+  right: 5%;
+  animation: float 8s ease-in-out infinite reverse;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+/* Статус "Доступен для проектов" */
+.availability {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  background: var(--color-obsidian);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: 50px;
+  border: 1px solid rgba(0, 229, 255, 0.2);
+  font-size: 14px;
+  color: var(--color-clean-syntax-muted);
+}
+
+.availability__dot {
+  width: 8px;
+  height: 8px;
+  background: #10b981;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #10b981;
+  animation: blink 2s ease-in-out infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* ============================================
+   АДАПТИВНОСТЬ
+   ============================================ */
+@media (max-width: 1024px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    padding-top: 120px;
+  }
+
+  .hero__content {
+    margin-bottom: var(--spacing-xxl);
+  }
+
+  .hero__description {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero__actions {
+    justify-content: center;
+  }
+
+  .hero__visual {
+    width: 350px;
+    height: 350px;
+  }
+
+  .hero__image-wrapper {
+    width: 300px;
+    height: 300px;
+  }
+
+  .hero__name {
+    font-size: 48px;
+  }
+
+  .code-decoration {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .nav {
+    display: none;
+  }
+
+  .hero__name {
+    font-size: 36px;
+  }
+
+  .hero__role {
+    font-size: 20px;
+  }
+
+  .hero__actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
